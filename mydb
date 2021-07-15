@@ -1,0 +1,46 @@
+CREATE TABLE `visitor` (
+  `visitor-id` varchar(8) NOT NULL,
+  `username` varchar(25) NOT NULL
+);
+
+CREATE TABLE `login` (
+  `username` varchar(25) NOT NULL,
+  `user-id` varchar(8) NOT NULL,
+  `password` varchar(25) NOT NULL,
+  `name` varchar(20) NOT NULL,
+  `surname` varchar(20) NOT NULL,
+  `ID-num` int(13) NOT NULL,
+  `next-of-kin` varchar(20) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `contact-num` int(10) NOT NULL,
+  `date` date,
+  `login` time,
+  `logout` time,
+  FOREIGN KEY (`user-id`) REFERENCES `visitor`(`visitor-id`),
+  FOREIGN KEY (`user-id`) REFERENCES `student`(`student-id`),
+  FOREIGN KEY (`user-id`) REFERENCES `admin`(`admin-id`),
+  FOREIGN KEY (`user-id`) REFERENCES `lecturer`(`lecturer-id`),
+  FOREIGN KEY (`next-of-kin`) REFERENCES `next-of-kin`(`name`)
+);
+
+CREATE TABLE `lecturer` (
+  `lecturer-id` varchar(8) NOT NULL,
+  `username` varchar(25) NOT NULL
+);
+
+CREATE TABLE `admin` (
+  `admin-id` varchar(8) NOT NULL,
+  `username` varchar(25) NOT NULL
+);
+
+CREATE TABLE `student` (
+  `student-id` varchar(8) NOT NULL,
+  `username` varchar(25) NOT NULL
+);
+
+CREATE TABLE `next-of-kin` (
+  `name` varchar(20) NOT NULL,
+  `surname` varchar(20) NOT NULL,
+  `contact-num` varchar(10) NOT NULL
+);
+
